@@ -16,8 +16,13 @@ const seedUser = async () => {
       process.exit();
     }
 
-    // Create default user
-    await User.create({
+    console.log(`✅ Connected to MongoDB: ${mongoose.connection.name}`);
+
+    // Delete existing admin if it exists
+    await User.deleteMany({ username: 'admin' });
+    console.log('🗑️  Cleared existing admin users');
+
+    const admin = await User.create({
       username: 'admin',
       password: 'admin123',
     });
