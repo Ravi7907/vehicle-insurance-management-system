@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: insurehub-fullstack
+    env: node
+    buildCommand: "cd client && npm install && npm run build && cd ../server && npm install"
+    startCommand: "cd server && NODE_ENV=production node server.js"
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
