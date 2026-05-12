@@ -25,10 +25,6 @@ exports.getStats = async (req, res) => {
       }),
     ]);
 
-    const totalCommission = await Policy.aggregate([
-      { $group: { _id: null, total: { $sum: '$commissionEarned' } } },
-    ]);
-
     res.json({
       success: true,
       data: {
@@ -36,7 +32,6 @@ exports.getStats = async (req, res) => {
         totalVehicles,
         totalPolicies,
         totalPremium: totalPremium[0]?.total || 0,
-        totalCommission: totalCommission[0]?.total || 0,
         expiringPolicies: expiringCount,
         expiredPolicies: expiredCount,
       },
@@ -89,7 +84,6 @@ exports.getMonthlyReport = async (req, res) => {
           _id: { $month: '$expiryDate' },
           count: { $sum: 1 },
           totalPremium: { $sum: '$premiumAmount' },
-          totalCommission: { $sum: '$commissionEarned' },
         },
       },
       { $sort: { _id: 1 } },
@@ -102,7 +96,6 @@ exports.getMonthlyReport = async (req, res) => {
         month: i + 1,
         count: existing?.count || 0,
         totalPremium: existing?.totalPremium || 0,
-        totalCommission: existing?.totalCommission || 0,
       };
     });
 
@@ -145,11 +138,10 @@ exports.getAgentReport = async (req, res) => {
         $group: {
           _id: '$agentName',
           policiesSold: { $sum: 1 },
-          totalCommission: { $sum: '$commissionEarned' },
           totalPremium: { $sum: '$premiumAmount' },
         },
       },
-      { $sort: { totalCommission: -1 } },
+      { $sort: { policiesSold: -1 } },
     ]);
 
     res.json({ success: true, data: agentData });

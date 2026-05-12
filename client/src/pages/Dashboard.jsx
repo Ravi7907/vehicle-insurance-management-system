@@ -103,7 +103,6 @@ const Dashboard = () => {
         <StatCard icon={MdDirectionsCar} label="Total Vehicles" value={stats?.totalVehicles || 0} color="#06b6d4" />
         <StatCard icon={MdPolicy} label="Total Policies" value={stats?.totalPolicies || 0} color="#8b5cf6" />
         <StatCard icon={MdAttachMoney} label="Total Premium" value={formatCurrency(stats?.totalPremium || 0)} color="#10b981" />
-        <StatCard icon={MdTrendingUp} label="Total Commission" value={formatCurrency(stats?.totalCommission || 0)} color="#f59e0b" />
         <StatCard icon={MdWarning} label="Expiring Soon" value={stats?.expiringPolicies || 0} color="#ef4444" />
       </div>
 

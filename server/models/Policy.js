@@ -53,11 +53,6 @@ const policySchema = new mongoose.Schema({
     trim: true,
     default: '',
   },
-  commissionEarned: {
-    type: Number,
-    default: 0,
-    min: [0, 'Commission cannot be negative'],
-  },
   renewalStatus: {
     type: String,
     enum: {

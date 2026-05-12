@@ -26,7 +26,6 @@ const initialForm = {
   premiumAmount: '',
   idv: '',
   agentName: '',
-  commissionEarned: '',
   renewalStatus: 'Active',
 };
 
@@ -99,7 +98,6 @@ const Policies = () => {
         ...form,
         premiumAmount: parseFloat(form.premiumAmount),
         idv: parseFloat(form.idv),
-        commissionEarned: parseFloat(form.commissionEarned) || 0,
       };
       if (editMode) {
         await policyAPI.update(selectedId, payload);
@@ -129,7 +127,6 @@ const Policies = () => {
       premiumAmount: policy.premiumAmount.toString(),
       idv: policy.idv.toString(),
       agentName: policy.agentName || '',
-      commissionEarned: policy.commissionEarned?.toString() || '0',
       renewalStatus: policy.renewalStatus,
     });
     setSelectedId(policy._id);
@@ -318,10 +315,6 @@ const Policies = () => {
             <div className="form-group">
               <label htmlFor="agentName">Agent Name</label>
               <input id="agentName" type="text" value={form.agentName} onChange={(e) => setForm({ ...form, agentName: e.target.value })} placeholder="Agent name" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="commissionEarned">Commission Earned (₹)</label>
-              <input id="commissionEarned" type="number" value={form.commissionEarned} onChange={(e) => setForm({ ...form, commissionEarned: e.target.value })} min="0" step="0.01" placeholder="0" />
             </div>
           </div>
           <div className="form-actions">
