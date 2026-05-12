@@ -26,12 +26,12 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-page">
       <div className="login-card">
         <div className="login-header">
-          <div className="login-logo">🛡️</div>
-          <h1>PolicyCraft</h1>
-          <p>Insurance Management System</p>
+          <img src="/PolicyCraft.jpeg" alt="POLICYCRAFT Logo" className="login-logo-img" />
+          <h1>POLICYCRAFT</h1>
+          <p>Insurance Simplified</p>
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
@@ -42,7 +42,7 @@ const Login = () => {
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
+              placeholder="Admin Username"
               required
             />
           </div>
@@ -54,18 +54,18 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              placeholder="••••••••"
               required
             />
           </div>
 
           <button type="submit" className="login-btn" disabled={loading}>
-            {loading ? 'Logging in...' : 'Sign In'}
+            {loading ? 'Authenticating...' : 'Sign In to Portal'}
           </button>
         </form>
 
         <div className="login-footer">
-          <p>&copy; 2026 PolicyCraft. All rights reserved.</p>
+          <p>&copy; 2026 POLICYCRAFT. SECURE ACCESS ONLY.</p>
         </div>
       </div>
     </div>

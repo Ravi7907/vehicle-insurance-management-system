@@ -66,11 +66,10 @@ const policySchema = new mongoose.Schema({
 });
 
 // Validate that expiryDate is after startDate
-policySchema.pre('validate', function (next) {
+policySchema.pre('validate', async function () {
   if (this.expiryDate && this.startDate && this.expiryDate <= this.startDate) {
     this.invalidate('expiryDate', 'Expiry date must be after start date');
   }
-  next();
 });
 
 module.exports = mongoose.model('Policy', policySchema);

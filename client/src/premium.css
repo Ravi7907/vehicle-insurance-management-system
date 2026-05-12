@@ -1,0 +1,158 @@
+/* --- POLICYCRAFT PREMIUM DESIGN --- */
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(20px);
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('/images/login-bg.png') no-repeat center center/cover;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.login-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.5) 100%);
+  z-index: 1;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur) saturate(180%);
+  -webkit-backdrop-filter: var(--glass-blur) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 48px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-logo-img {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.6));
+  animation: float 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.login-header h1 {
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+
+.login-header p {
+  color: #94a3b8;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.login-form .form-group {
+  margin-bottom: 28px;
+}
+
+.login-form label {
+  display: block;
+  color: #cbd5e1;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.login-form input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 14px 18px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+}
+
+.login-btn {
+  width: 100%;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 20px;
+  box-shadow: 0 12px 20px -5px rgba(99, 102, 241, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.login-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.5);
+  filter: brightness(1.1);
+}
+
+.login-btn:active {
+  transform: translateY(-1px) scale(1);
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #475569;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* App-wide POLICYCRAFT updates */
+.sidebar-logo span, .header-title, .nav-label, .page-title {
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  font-weight: 900 !important;
+}
