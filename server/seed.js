@@ -10,17 +10,17 @@ const seedUser = async () => {
     console.log('✅ Connected to MongoDB');
 
     // Delete existing admin if it exists
-    await User.deleteMany({ username: 'admin' });
+    await User.deleteMany({ username: { $in: ['admin', 'Admin'] } });
     console.log('🗑️  Cleared existing admin users');
 
     const admin = await User.create({
-      username: 'admin',
-      password: 'admin123',
+      username: 'Admin',
+      password: 'Admin@123',
     });
 
     console.log('🚀 Default Admin User Created/Reset Successfully!');
-    console.log('Username: admin');
-    console.log('Password: admin123');
+    console.log('Username: Admin');
+    console.log('Password: Admin@123');
     process.exit();
   } catch (error) {
     console.error('❌ Error seeding user:', error.message);
